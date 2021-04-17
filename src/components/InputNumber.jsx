@@ -12,15 +12,15 @@ const InputNumber = ({
     <div className="inputNumber">
       <input
         type="number"
-        placeholder="Insert a number"
+        placeholder={placeholder}
         className="inputNumber__form"
-        value={number}
+        value={number ? number : ""}
         onChange={setNumber}
       />
       {checklist ? (
-        <i class="fas fa-check-square checklist"></i>
+        <i onClick={setChecklist} className="fas fa-check-square checklist"></i>
       ) : (
-        <i class="far fa-square checklist"></i>
+        <i onClick={setChecklist} className="far fa-square checklist"></i>
       )}
     </div>
   );
