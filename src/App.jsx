@@ -4,16 +4,26 @@ import InputNumber from "./components/InputNumber";
 import InputOperator from "./components/InputOperator";
 
 function App() {
-  const [number1, setNumber1] = useState(null);
-  const [number2, setNumber2] = useState(null);
-  const [number3, setNumber3] = useState(null);
-  const [checklist1, setCehcklist1] = useState(false);
-  const [checklist2, setCehcklist2] = useState(false);
-  const [checklist3, setCehcklist3] = useState(false);
+  const [number, setNumber] = useState({
+    number1: null,
+    number2: null,
+    number3: null,
+  });
+  // const [number1, setNumber1] = useState(null);
+  // const [number2, setNumber2] = useState(null);
+  // const [number3, setNumber3] = useState(null);
+  const [checklist, setChecklist] = useState({
+    checklist1: false,
+    checklist2: false,
+    checklist3: false,
+  });
+  // const [checklist1, setCehcklist1] = useState(false);
+  // const [checklist2, setCehcklist2] = useState(false);
+  // const [checklist3, setCehcklist3] = useState(false);
   const [hasil, setHasil] = useState(0);
 
   const handleResultProcess = (param) => {
-    const arrayOfNumber = [number1, number2];
+    const arrayOfNumber = [number.number1, number.number2];
     if (
       arrayOfNumber[0] === null ||
       isNaN(arrayOfNumber[0]) ||
@@ -21,11 +31,15 @@ function App() {
       isNaN(arrayOfNumber[1])
     ) {
       return window.alert("Silahkan periksa angka/checklist");
-    } else if (!checklist1 || !checklist2) {
+    } else if (!checklist.checklist1 || !checklist.checklist2) {
       return window.alert("Silahkan periksa checklist");
     }
-    if (typeof number3 === "number" && checklist3 && !isNaN(number3)) {
-      arrayOfNumber.push(number3);
+    if (
+      typeof number.number3 === "number" &&
+      checklist.checklist3 &&
+      !isNaN(number.number3)
+    ) {
+      arrayOfNumber.push(number.number3);
     }
     // console.log(arrayOfNumber);
 
@@ -51,26 +65,56 @@ function App() {
       <div className="cal__container">
         <div className="cal__panel__top">
           <InputNumber
-            number={number1}
-            setNumber={(e) => setNumber1(parseInt(e.target.value))}
-            checklist={checklist1}
-            setChecklist={() => setCehcklist1(!checklist1)}
+            number={number.number1}
+            setNumber={(e) =>
+              setNumber({
+                ...number,
+                number1: parseInt(e.target.value),
+              })
+            }
+            checklist={checklist.checklist1}
+            setChecklist={() =>
+              setChecklist({
+                ...checklist,
+                checklist1: !checklist.checklist1,
+              })
+            }
             placeholder="*required number"
             required
           />
           <InputNumber
-            number={number2}
-            setNumber={(e) => setNumber2(parseInt(e.target.value))}
-            checklist={checklist2}
-            setChecklist={() => setCehcklist2(!checklist2)}
+            number={number.number2}
+            setNumber={(e) =>
+              setNumber({
+                ...number,
+                number2: parseInt(e.target.value),
+              })
+            }
+            checklist={checklist.checklist2}
+            setChecklist={() =>
+              setChecklist({
+                ...checklist,
+                checklist2: !checklist.checklist2,
+              })
+            }
             placeholder="*required number"
             required
           />
           <InputNumber
-            number={number3}
-            setNumber={(e) => setNumber3(parseInt(e.target.value))}
-            checklist={checklist3}
-            setChecklist={() => setCehcklist3(!checklist3)}
+            number={number.number3}
+            setNumber={(e) =>
+              setNumber({
+                ...number,
+                number3: parseInt(e.target.value),
+              })
+            }
+            checklist={checklist.checklist3}
+            setChecklist={() =>
+              setChecklist({
+                ...checklist,
+                checklist3: !checklist.checklist3,
+              })
+            }
             placeholder="(optional)"
           />
         </div>
