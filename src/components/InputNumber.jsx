@@ -14,7 +14,7 @@ const InputNumber = ({
         type="number"
         placeholder={placeholder}
         className="inputNumber__form"
-        value={number ? number : ""}
+        value={typeof number !== "number" ? "" : number}
         onChange={setNumber}
       />
       {checklist ? (
