@@ -9,17 +9,13 @@ function App() {
     number2: null,
     number3: null,
   });
-  // const [number1, setNumber1] = useState(null);
-  // const [number2, setNumber2] = useState(null);
-  // const [number3, setNumber3] = useState(null);
+  
   const [checklist, setChecklist] = useState({
     checklist1: false,
     checklist2: false,
     checklist3: false,
   });
-  // const [checklist1, setCehcklist1] = useState(false);
-  // const [checklist2, setCehcklist2] = useState(false);
-  // const [checklist3, setCehcklist3] = useState(false);
+  
   const [hasil, setHasil] = useState(0);
 
   const handleResultProcess = (param) => {
@@ -41,7 +37,6 @@ function App() {
     ) {
       arrayOfNumber.push(number.number3);
     }
-    // console.log(arrayOfNumber);
 
     switch (param) {
       case "+":
